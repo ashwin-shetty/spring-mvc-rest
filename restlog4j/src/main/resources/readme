@@ -1,0 +1,41 @@
+This is a sample Rest Application "Hello World " created using JDK-6
+
+Tested in Tomcat 7 
+
+1. jackson.version -2.6.2 is used instead of 2.7.2  to avoid warning 
+ <com.fasterxml.jackson.databind.introspect.JacksonAnnotationIntrospector> <BEA-000000> <Unable to load JDK7 annotation types; will have to skip> 
+
+2.In web.xml adding <display-name>My Rest API</display-name> to avoid error
+ERROR StatusLogger No Log4j context configuration provided. This is very unusual.
+
+3.Updating web.xml tag from <web-app> to 
+<web-app xmlns="http://java.sun.com/xml/ns/javaee"
+	      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	      xsi:schemaLocation="http://java.sun.com/xml/ns/javaee
+	      http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
+	      version="2.5">
+For more web.xml : https://www.mkyong.com/web-development/the-web-xml-deployment-descriptor-examples/	      
+For Error:
+<A version attribute was not found in element web-app in the deployment descriptor in 
+C:\Workspace\rest\target\m2e-wtp\web-resources/WEB-INF/web.xml. 
+A version attribute is required, but this version of the Weblogic Server will assume that the JEE5 is used. Future versions of the Weblogic Server will reject descriptors that do not specify the JEE version.> 
+
+4. Changing file Encoding in Eclipse
+	Right Click on project -> Properities
+	Search "Resource" change 
+	Text file encoding - Drop down to "UTF-8"
+
+************************************************************************************
+ Maven Build Issues
+1. pom.xml 
+	<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+	<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+	Warning : Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+	  
+Sample JSON Request
+
+{
+  "firstName": "Vivek",
+  "lastName": "Prabhu"
+}	  
+ 

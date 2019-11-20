@@ -26,7 +26,16 @@ public class HelloWorldController {
 	
 	private static final Logger logger = LogManager
 			.getLogger(HelloWorldController.class);
-
+	
+	@RequestMapping(method = RequestMethod.GET)
+	@ResponseBody
+	public String homepage()  {
+		
+	  return "<div><p> Set Header for Json Rest API</p> "
+	  		+ "<p>Content-Type: application/json; charset=utf-8 </p> "
+	  		+ "<p>Accept :  application/json; charset=utf-8 </p></div>";
+	}
+	
 	@RequestMapping(value = "/test", method = RequestMethod.GET)
 	@ResponseBody
 	public String helloWorld()  {	
@@ -40,45 +49,4 @@ public class HelloWorldController {
 		
 	  return "Hello World";
 	}
-	
-	@PutMapping(value = "/customers",
-	consumes = {MediaType.APPLICATION_JSON_VALUE},
-	produces = {MediaType.APPLICATION_JSON_VALUE})
-	public ResponseEntity<Customer> createCustomer(@RequestBody Customer customer) {
-		System.out.println("Result : "+ customer.getFirstName());
-		logger.info("This is method which returns JSON value");
-		return new ResponseEntity<Customer>(customer, HttpStatus.OK);
-	}
-	
-	@PutMapping(value = "/customers",
-			consumes = {MediaType.APPLICATION_XML_VALUE},
-			produces = {MediaType.APPLICATION_XML_VALUE})
-			public ResponseEntity<Customer> createCustomerXML(@RequestBody Customer customer) {
-				System.out.println("Result : "+ customer.getFirstName());
-				logger.info("This is method which returns XML value");
-				return new ResponseEntity<Customer>(customer, HttpStatus.OK);
-			}
-	
-	@PostMapping(value = "/customers",
-			consumes = {MediaType.APPLICATION_XML_VALUE,MediaType.APPLICATION_JSON_VALUE},
-			produces = {MediaType.APPLICATION_XML_VALUE,MediaType.APPLICATION_JSON_VALUE})
-			public ResponseEntity<List<Customer>> customerDetails() {
-				
-				List cutomers = new ArrayList<Customer>();
-				
-				Customer customerFirst = new Customer();
-				customerFirst = new Customer(); 
-				customerFirst.setFirstName("Elvis");
-				customerFirst.setLastName("Presley");
-				cutomers.add(customerFirst);
-				
-				Customer customerSecond = new Customer();
-				customerSecond.setFirstName("Michael");
-				customerSecond.setLastName("Jackson");
-				cutomers.add(customerSecond);
-				
-				//System.out.println("Result : "+ customer.getFirstName());
-				logger.info("This is method which returns XML value");
-				return new ResponseEntity<List<Customer>>(cutomers, HttpStatus.OK);
-			}
 }

@@ -11,7 +11,7 @@
 		<jdk.version>1.8</jdk.version>
 		<spring.version>4.3.7.RELEASE</spring.version>
 		<servletapi.version>2.5</servletapi.version>
-		<jackson.version>2.9.10.1</jackson.version>
+		<jackson.version>2.12.6.1</jackson.version>
 		<log4j.version>2.3</log4j.version>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
